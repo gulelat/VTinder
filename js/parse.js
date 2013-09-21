@@ -49,7 +49,7 @@ $(function() {
         },
 
         error: function(user, error) {
-          self.$(".login-form .alert").html("Invalid username or password. Please try again.").show();
+          self.$(".alert").html("Invalid username or password. Please try again.").show();
           this.$(".login-form button").removeAttr("disabled");
         }
       });
@@ -70,10 +70,23 @@ $(function() {
       this.delegateEvents();
     }
   });
+  var LandingView = Parse.View.extend({
 
+    el: "#main",
+    
+    initialize: function() {
+      this.render();
+    },
+
+    render: function() {
+      this.$el.html(_.template($("#landing-template").html()));
+      this.delegateEvents();
+    }
+
+  });
   var RegisterView = Parse.View.extend({
     events: {
-      "submit #register-form": "signUp",
+      "click #r": "signUp",
       "click #login": "loginView"
     },
 
@@ -85,8 +98,6 @@ $(function() {
     },
 
     signUp: function(e) {
-      e.preventDefault();
-      alert("hey");
       //var self = this;
       //var username = this.$("#email").val();
       //var password = this.$("#password").val();
@@ -100,20 +111,18 @@ $(function() {
 
           user.signUp(null, {
             success: function(user) {
-              alert("hey");
+              new LogInView();
               self.undelegateEvents();
               delete self;
             },
 
-            error: function(user, error, e) {
-              alert("hey2");
-              self.$(".signup-form .alert").html(error.message).show();
-              this.$(".signup-form button").removeAttr("disabled");
-              
+            error: function(user, error) {
+              self.$(".alert").html(error.message).show();
+              this.$("#register-form button").removeAttr("disabled");
             }
           });
 
-      this.$(".signup-form button").attr("disabled", "disabled");
+      this.$("#register-form button").attr("disabled", "disabled");
 
       return false;
     },
@@ -142,11 +151,10 @@ $(function() {
 
     render: function() {
       if (Parse.User.current()) {
-        alert("hey");
-        Parse.User.logOut();
-        new LogInView();
-        this.undelegateEvents();
-        delete this;
+       Parse.User.logOut();
+       new LogInView();
+       this.undelegateEvents();
+       delete this;
       } else {
         new LogInView();
       }

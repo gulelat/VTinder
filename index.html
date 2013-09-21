@@ -27,7 +27,6 @@
   </head>
 
   <body>
-   
     <div id="app">
          <div class="navbar navbar-fixed-top">
           <div class="navbar-inner">
@@ -95,18 +94,19 @@
 
             <div class="col-lg-6">
                 <div id="register-wraper">
-                <div class="alert alert-danger" style="display:none"></div>
-                    <form id="register-form" class="login-form">
+               
+                    <form id="register-form" class="form login-form">
                         <legend>Register to <span class="blue">VTinder</span></legend>
                     
                         <div class="body">
+                        <div class="alert alert-danger" style="display:none"></div>
                             <!-- first name -->
                             <div class="form-group form-inline">
-                                <input name="email" class="input-lg" type="text" placeholder="Email Address">
+                                <input id="email" class="input-lg" type="text" placeholder="Email Address">
                             </div>
                             <!-- last name -->
                             <div class="form-group form-inline">
-                                <input name="password" class="input-lg" type="password" placeholder="Password">
+                                <input id="password" class="input-lg" type="password" placeholder="Password">
                             </div>
 
                             <div class="form-group form-inline">
@@ -120,7 +120,7 @@
                             <input type="checkbox" id="inlineCheckbox1" value="option1"> Remember me
                         </label>
                                     
-                        <button type="submit" id="r" class="btn btn-success">Register</button>
+                        <a href="#" id="r" class="btn btn-success">Register</a>
                 </div>
                     </form>
                 </div>
@@ -132,7 +132,27 @@
     </footer>
 
     </script>
-    
+    <script type="text/template" id="landing-template">
+    <div class="col-lg-12 col-lg-offset-2">
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+          <h2>Looking to Buy?</h2>
+          <p>TEXT GOES HERE</p>
+          <p><a class="btn btn-black" href="#">Buy &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+          <h2>Looking to Sell?</h2>
+          <p>TEXT GOES HERE</p>
+          <p><a class="btn btn-black" href="#">Sell &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+        </div>
+        <footer class="white navbar-fixed-bottom">
+        </footer>
+    </script>
 
 
     <!-- Le javascript
