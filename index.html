@@ -10,10 +10,11 @@
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
     <script src="js/underscore-1.1.6.js"></script>
     <script src="js/parse.js"></script>
+    <script src="js/nnav.jquery.js"></script>
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/nnav.css" type="text/css" />
     <link rel="stylesheet" href="css/typica-login.css">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -27,22 +28,28 @@
   </head>
 
   <body>
-    <div id="app">
-         <div class="navbar navbar-fixed-top">
-          <div class="navbar-inner">
-            <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
+    <div style="padding-left:0;" id="app">
+    <div id="nav"></div>
+    <div id="main" class="container"></div>
+    <script type="text/template" id="nav-template">   
+     <div class="nnav" id="nnav">
+         <div class="nnav-nav">
+            <div class="nnav-nav-inner">
+                Navigation
+            </div>
+           </div>
+           <div class="nnav-content">
+            <div class="nnav-content-inner"> 
+              <a href="#nnav" data-toggle="nnav" class="nnav-btn">=</a>
             </div>
           </div>
-        </div>
-        <div id="main" class="container"></div>
-    </div>
-   
-     <script type="text/template" id="login-template">
+       </div>
+      </div>
+    </script>
+    <script type="text/template" id="main-template"> 
+        <h1>hey</h1>
+    </script>
+    <script type="text/template" id="login-template">
         <div id="login-wraper">
             <form class="form login-form">
                 <legend>Sign in to <span class="blue">VTinder</span></legend>
@@ -110,7 +117,7 @@
                             </div>
 
                             <div class="form-group form-inline">
-                                <input name="password_check" class="input-lg" type="password" placeholder="Password Check">
+                                <input id="password_check" class="input-lg" type="password" placeholder="Password Check">
                             </div>
                             <!-- username -->
                         </div>
@@ -128,33 +135,10 @@
 
         </div>
     <footer class="white navbar-fixed-bottom">
-      Alread have an account? <a href="javascript:void(0)" id="login" class="btn btn-black">Sign in</a>
+      Already have an account? <a href="javascript:void(0)" id="login" class="btn btn-black">Sign in</a>
     </footer>
 
     </script>
-    <script type="text/template" id="landing-template">
-    <div class="col-lg-12 col-lg-offset-2">
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2>Looking to Buy?</h2>
-          <p>TEXT GOES HERE</p>
-          <p><a class="btn btn-black" href="#">Buy &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2>Looking to Sell?</h2>
-          <p>TEXT GOES HERE</p>
-          <p><a class="btn btn-black" href="#">Sell &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-
-        </div>
-        <footer class="white navbar-fixed-bottom">
-        </footer>
-    </script>
-
-
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

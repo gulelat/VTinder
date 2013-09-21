@@ -22,6 +22,32 @@ $(function() {
     }
   });
 
+  var MainView = Parse.View.extend({
+    events: {
+      "click #logout": "logOut",
+    },
+
+    el: "#main",
+
+    initialize: function() {
+      _.bindAll(this, "logOut");
+      this.render();
+    },
+
+    logOut: function() {
+      Parse.User.logOut();
+
+      self.undelegateEvents();
+      delete self;
+    },
+
+    render: function() {
+      $("#nav").html(_.template($("#nav-template").html()));
+      this.$el.html(_.template($("#main-template").html()));
+      this.delegateEvents();
+    }
+
+  });
   
   var LogInView = Parse.View.extend({
     events: {
@@ -70,20 +96,7 @@ $(function() {
       this.delegateEvents();
     }
   });
-  var LandingView = Parse.View.extend({
 
-    el: "#main",
-    
-    initialize: function() {
-      this.render();
-    },
-
-    render: function() {
-      this.$el.html(_.template($("#landing-template").html()));
-      this.delegateEvents();
-    }
-
-  });
   var RegisterView = Parse.View.extend({
     events: {
       "click #r": "signUp",
@@ -99,17 +112,26 @@ $(function() {
 
     signUp: function(e) {
       //var self = this;
-      //var username = this.$("#email").val();
-      //var password = this.$("#password").val();
+      var username = this.$("#email").val();
+      var password = this.$("#password").val();
+      var password_check = this.$("#password_check").val();
 
       var user = new Parse.User();
-      user.set("username", this.$("#email").val());
-      user.set("password", this.$("#password").val());
-      //user.set("email", "email@example.com");
+      user.set("username", username);
+      user.set("password", password);
+     
 
-      //var password_check = this.$("#password_check").val();
-
-          user.signUp(null, {
+    if(username == ""){
+      self.$(".alert").html("Username can not be blank.").show();
+      this.$("#register-form button").removeAttr("disabled");
+    } else if(password == "") {
+      self.$(".alert").html("You must enter a Password.").show();
+      this.$("#register-form button").removeAttr("disabled");
+    } else if(password != password_check){
+      self.$(".alert").html("Your passwords do not match.").show();
+      this.$("#register-form button").removeAttr("disabled");
+    } else {
+      user.signUp(null, {
             success: function(user) {
               new LogInView();
               self.undelegateEvents();
@@ -121,7 +143,7 @@ $(function() {
               this.$("#register-form button").removeAttr("disabled");
             }
           });
-
+      }
       this.$("#register-form button").attr("disabled", "disabled");
 
       return false;
@@ -151,10 +173,7 @@ $(function() {
 
     render: function() {
       if (Parse.User.current()) {
-       Parse.User.logOut();
-       new LogInView();
-       this.undelegateEvents();
-       delete this;
+        new MainView();
       } else {
         new LogInView();
       }

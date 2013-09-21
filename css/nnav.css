@@ -1,0 +1,95 @@
+body, html { 
+  height: 100%; 
+  padding: 0px; 
+  margin: 0px; 
+  font-family: Helvetica, sans-serif; 
+  font-size: 14px; 
+  line-height: 1.6; 
+}
+
+a.nnav-btn {
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:0px;
+  padding-bottom: 4px;
+  line-height: 1.0;
+  font-size:26px;
+	text-decoration:none;
+  color:#333;
+  border-radius:50%;
+  border:4px solid #333;
+}
+a.nnav-btn:hover {
+	border:4px solid #fff;
+  color:#fff;
+}
+
+.nnav { 
+  display: block; 
+  width: 100%; 
+  overflow-x: hidden; 
+}
+
+.nnav-nav { 
+  display: block; 
+  width: 25%; 
+  height: 100%; 
+  margin-left: -25%; 
+  position: fixed; 
+  color: rgb(255, 255, 255); 
+  background-color: rgb(51, 51, 51);
+  float: left; 
+  overflow: auto; 
+ 	-webkit-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+	-moz-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+} 
+.nnav.nav-active .nnav-nav { 
+  margin-left: 0%; 
+}
+
+.nnav-nav-inner { 
+  padding: 20px; 
+}
+
+.nnav-content { 
+  display: block; 
+  float: left; 
+  width: 100%; 
+  margin-left: 0%; 
+	-webkit-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+	-moz-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-left 0.25s ease-in-out, width 0.25s ease-in-out;  
+}
+
+.nnav.nav-active .nnav-content { margin-left: 25%; }
+
+.nnav-content-inner { padding: 20px; }
+
+@media screen and (max-width:979px) {
+  .nnav-nav {
+  	width:40%;
+    margin-left:-40%;
+  }
+  .nnav.nav-active .nnav-nav {
+  	margin-left:0px;
+  } 
+  .nnav.nav-active .nnav-content {
+  	margin-left:40%;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .nnav-nav {
+  	width:80%;
+    margin-left:-80%;
+  }
+  .nnav.nav-active .nnav-nav {
+  	margin-left:0%;
+  } 
+  .nnav.nav-active .nnav-content {
+  	margin-left:80%;
+  }
+}
