@@ -22,7 +22,11 @@ $(function() {
     }
   });
 
-
+  var SearchView = Parse.View.extend({
+    events: {
+      "submit form.buy-template": ""
+    }
+  })
   var LogInView = Parse.View.extend({
     events: {
       "submit form.login-form": "logIn",

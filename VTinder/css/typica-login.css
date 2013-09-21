@@ -384,7 +384,7 @@ footer.navbar-fixed-bottom {
   }
 }
 
-#buy-wraper {
+#search-wraper {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
@@ -406,25 +406,25 @@ footer.navbar-fixed-bottom {
   text-align: center;
 }
 
-.buy-form .body {
+.search-form .body {
   border-bottom: 1px solid #eeeeee;
 }
 
-.buy-form .footer {
+.search-form .footer {
   margin-top:10px;
   margin-bottom:20px;
 }
 
-.buy-form .footer {
+.search-form .footer {
   margin-top:10px;
   margin-bottom:10px;
 }
 
-.buy-form .footer .inline {
+.search-form .footer .inline {
   display:inline;
 }
 
-.buy-form .footer .btn {
+.search-form .footer .btn {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
