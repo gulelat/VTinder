@@ -14,26 +14,7 @@ $(function() {
 // the todo items and provide user authentication and sessions.
 
   // Our basic Todo model has `content`, `order`, and `done` attributes.
-  var Todo = Parse.Object.extend("Todo", {
-    // Default attributes for the todo.
-    defaults: {
-      content: "empty todo...",
-      done: false
-    },
-
-    // Ensure that each todo created has `content`.
-    initialize: function() {
-      if (!this.get("content")) {
-        this.set({"content": this.defaults.content});
-      }
-    },
-
-    // Toggle the `done` state of this todo item.
-    toggle: function() {
-      this.save({done: !this.get("done")});
-    }
-  });
-
+  
   // This is the transient application state, not persisted on Parse
   var AppState = Parse.Object.extend("AppState", {
     defaults: {
@@ -41,30 +22,17 @@ $(function() {
     }
   });
 
-  // Todo Collection
-  // ---------------
-
-  
-  // Todo Item View
-  // --------------
-
-  // The DOM element for a todo item...
-  
-  // The Application
-  // ---------------
-
-  // The main view that lets a user manage their todo items
   
   var LogInView = Parse.View.extend({
     events: {
       "submit form.login-form": "logIn",
-      "onClick #register": "RegisterView"
+      "click #register": "registerView"
     },
 
     el: "#main",
     
     initialize: function() {
-      _.bindAll(this, "logIn", "RegisterView");
+      _.bindAll(this, "logIn", "registerView");
       this.render();
     },
 
@@ -91,47 +59,69 @@ $(function() {
       return false;
     },
 
+    registerView: function() {
+      new RegisterView();
+      this.undelegateEvents();
+      delete this;
+    },
+
     render: function() {
       this.$el.html(_.template($("#login-template").html()));
       this.delegateEvents();
     }
   });
+
   var RegisterView = Parse.View.extend({
     events: {
       "submit #register-form": "signUp",
+      "click #login": "loginView"
     },
 
     el: "#main",
     
     initialize: function() {
-      _.bindAll(this, "signUp", "RegisterView");
+      _.bindAll(this, "loginView", "signUp");
       this.render();
     },
 
     signUp: function(e) {
-      var self = this;
-      var username = this.$("#email").val();
-      var password = this.$("#password").val();
-      var password_check = this.$("#password_check").val();
+      e.preventDefault();
+      alert("hey");
+      //var self = this;
+      //var username = this.$("#email").val();
+      //var password = this.$("#password").val();
 
-      if(password == password_check){
-          Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
+      var user = new Parse.User();
+      user.set("username", this.$("#email").val());
+      user.set("password", this.$("#password").val());
+      //user.set("email", "email@example.com");
+
+      //var password_check = this.$("#password_check").val();
+
+          user.signUp(null, {
             success: function(user) {
-              new ManageTodosView();
+              alert("hey");
               self.undelegateEvents();
               delete self;
             },
 
-            error: function(user, error) {
-              self.$(".signup-form .error").html(error.message).show();
+            error: function(user, error, e) {
+              alert("hey2");
+              self.$(".signup-form .alert").html(error.message).show();
               this.$(".signup-form button").removeAttr("disabled");
+              
             }
           });
-        }
 
       this.$(".signup-form button").attr("disabled", "disabled");
 
       return false;
+    },
+
+    loginView: function(e) {
+      new LogInView();
+      this.undelegateEvents();
+      delete this;
     },
 
     render: function() {
@@ -152,7 +142,11 @@ $(function() {
 
     render: function() {
       if (Parse.User.current()) {
-        new ManageTodosView();
+        alert("hey");
+        Parse.User.logOut();
+        new LogInView();
+        this.undelegateEvents();
+        delete this;
       } else {
         new LogInView();
       }
