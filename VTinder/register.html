@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login page - Typica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML template for Your company">
+    <meta name="author" content="Oskar Żabik (oskar.zabik@gmail.com)">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+    <script src="js/underscore-1.1.6.js"></script>
+    <script src="js/parse.js"></script>
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/typica-login.css">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+  </head>
+
+  <body>
+   
+    <div id="app">
+         <div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="main" class="container"></div>
+    </div>
+   
+     <script type="text/template" id="login-template">
+        <div id="login-wraper">
+            <form class="form login-form">
+                <legend>Sign in to <span class="blue">VTinder</span></legend>
+            
+                <div class="body">
+                    <div class="alert alert-danger" style="display:none"></div>
+                    <div class="form-group form-inline">
+                        <input class="input-lg" type="text" id="email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group form-inline">
+                        <input class="input-lg" type="password" id="password" placeholder="Password">
+                    </div>
+                </div>
+            
+                <div class="footer">
+                    <label class="checkbox inline">
+                        <input type="checkbox" id="inlineCheckbox1" value="option1"> Remember me
+                    </label>
+                                
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            
+            </form>
+        </div>
+        <footer class="white navbar-fixed-bottom"> Don&rsquo;t have an account yet? <a href="javascript:void(0)" id="register" class="btn btn-black">Register</a>
+        </footer>
+    </script>
+    <script type="text/template" id="register-template">
+        <div class="row">
+
+            <div class="col-lg-6">
+                
+                <div class="register-info-wraper">
+                    <div id="register-info">
+                    
+                        <h1>You are about 30 seconds away from using this awesome app. Good choice!</h1>
+                    
+                        <ul dir="rtl">
+                            <li>Blah blah blah</li>
+                            <li>That&rsquo;s why this app is so awesome</li>
+                            <li>!So register, like, right NOW</li>
+                            <li>Or don&rsquo;t, who cares</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div id="register-wraper">
+                <div class="alert alert-danger" style="display:none"></div>
+                    <form id="register-form" class="login-form">
+                        <legend>Register to <span class="blue">VTinder</span></legend>
+                    
+                        <div class="body">
+                            <!-- first name -->
+                            <div class="form-group form-inline">
+                                <input name="email" class="input-lg" type="text" placeholder="Email Address">
+                            </div>
+                            <!-- last name -->
+                            <div class="form-group form-inline">
+                                <input name="password" class="input-lg" type="password" placeholder="Password">
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <input name="password_check" class="input-lg" type="password" placeholder="Password Check">
+                            </div>
+                            <!-- username -->
+                        </div>
+                    
+                <div class="footer">
+                        <label class="checkbox inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1"> Remember me
+                        </label>
+                                    
+                        <button type="submit" id="r" class="btn btn-success">Register</button>
+                </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    <footer class="white navbar-fixed-bottom">
+      Alread have an account? <a href="javascript:void(0)" id="login" class="btn btn-black">Sign in</a>
+    </footer>
+
+    </script>
+    
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+
+  </body>
+</html>
