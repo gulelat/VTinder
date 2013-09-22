@@ -12,6 +12,7 @@
     <script src="js/parse.js"></script>
     <script src="js/nnav.jquery.js"></script>
     <script src="js/buybar.jquery.js"></script>
+    <script src="js/model.js"></script>
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -58,12 +59,10 @@
             </div>
             <div class="buybar-content">
                 <br>
-                <br>
-                <br>
                 <h1>Sell</h1>
                 <br>
                 <input class="input" type="text" id="state" placeholder="State (e.g. VA)">
-                <input class="input" type="text" id="year" placeholder="Year bought">
+                <input class="input" id="year" placeholder="Year bought">
                 <input class="input" type="text" id="maker" placeholder="Make">
                 <select class="input" type="text" id="models" placeholder="Model" style="width:160px; float:left; text-align:center; height: 45px; margin-bottom: 3px; text-align:left; padding-top:10px;">
                 </select>
@@ -99,11 +98,11 @@
         <div class="bar-ico" id="bar-ico">></div>
 
         <div class="car-main">
-            <img src="" class="car-picture"/>
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT2smhzq3ouAJKx5NSFdz2oqFiCWe5NlEl0hEja0sxE19AvOTzR" class="car-picture"/>
             <input type="hidden" id="objectId" value=""/>
             <div class="car-button">
-                <a href="javascript:void(0)" id="btn-like" class="btn btn-success btn-lg">Like</a>
                 <a href="javascript:void(0)" id="btn-dislike" class="btn btn-danger btn-lg">Pass</a>
+                <a href="javascript:void(0)" id="btn-like" class="btn btn-success btn-lg">Like</a>
             </div>
         </div>
 
