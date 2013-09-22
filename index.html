@@ -33,7 +33,15 @@
 
 
     <script type="text/template" id="main-template">
-        <div class="bar-right" id="bar-right"></div>
+        <div class="bar-right" id="bar-right">
+            <div class="sidebar-content">
+                <h1><%= Parse.User.current().get("username") %></h1>
+
+                
+            </div>
+        </div>
+
+
         <div class="bar-ico-right" id="bar-ico-right"><</div>
 
         <div class="bar" id="sidebar">
@@ -98,7 +106,7 @@
         <div class="bar-ico" id="bar-ico">></div>
 
         <div class="car-main">
-            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT2smhzq3ouAJKx5NSFdz2oqFiCWe5NlEl0hEja0sxE19AvOTzR" class="car-picture"/>
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT2smhzq3ouAJKx5NSFdz2oqFiCWe5NlEl0hEja0sxE19AvOTzR" height="300" width="400" class="car-picture"/>
             <input type="hidden" id="objectId" value=""/>
             <div class="car-button">
                 <a href="javascript:void(0)" id="btn-dislike" class="btn btn-danger btn-lg">Pass</a>

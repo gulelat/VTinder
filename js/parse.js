@@ -59,6 +59,18 @@ $(function() {
         });
       }
     },*/
+
+    getLikes: function(){
+      var Models = new Parse.Object.extend("CarsImages");
+      var query = new Parse.Query(Models);
+      var query.equalTo("username", Parse.User.current().get("username"));
+      query.find({
+        success: function(results) {
+          
+        }
+      })
+    },
+
     Liked: function(){
       var carView = new Parse.Object("CarViews");
           carView.set("carId", $("#objectId").val());

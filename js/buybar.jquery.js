@@ -21,3 +21,7 @@ $(document).ready(function() {
     $("#bar-ico-right").toggleClass("click")
   });
 });
+
+function elemCreate(user, year, condition, make, model, price){
+  
+}
