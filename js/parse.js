@@ -45,7 +45,7 @@ $(function() {
     render: function() {
       $("#nav").html(_.template($("#nav-template").html()));
       this.$el.html(_.template($("#main-template").html()));
-      $("#footer").html(_.template($("#logout-template").html()));
+      this.$el.html(_.template($("#logout-template").html()));
       this.delegateEvents();
     }
 
