@@ -28,8 +28,8 @@ $(function() {
     events: {
       "click #logout": "logOut",
       "click #btn-like": "Liked",
-      "click #btn-dislike": "Disliked"
-      //"click #upload": "uploadImg"
+      "click #btn-dislike": "Disliked",
+      "click #upload": "uploadImg"
     },
 
     el: "#main",
@@ -37,11 +37,11 @@ $(function() {
     Car: Parse.Object("CarsImages"),
 
     initialize: function() {
-      _.bindAll(this, "logOut", "nextImg", "Liked", "Disliked", "findCars");
+      _.bindAll(this, "logOut", "nextImg", "Liked", "Disliked", "findCars", "uploadImg");
       this.render();
     },
 
-    /*uploadImg: function(){
+    uploadImg: function(){
       
       var fileUploadControl = $("#profilePhotoFileUpload")[0];
       if (fileUploadControl.files.length > 0) {
@@ -50,31 +50,38 @@ $(function() {
        
         var parseFile = new Parse.File(name, file);
         parseFile.save().then(function() {
-          var jobApplication = new Parse.Object("CarsImages");
-          jobApplication.set("applicantName", "Joe Smith");
+          var jobApplication = new Parse.Object("Cars");
+          jobApplication.set("condition", $("#condition").val());
+          jobApplication.set("make", $("#maker").val());
+          jobApplication.set("model", $("#models").val());
+          jobApplication.set("state", $("#state").val());
+          jobApplication.set("year", parseInt($("#year").val()));
+          jobApplication.set("user_id", Parse.User.current().id);
+          jobApplication.set("source", parseFile.url());
+          jobApplication.set("price",parseInt($("#dollar").val()));
           jobApplication.set("applicantResumeFile", name);
           jobApplication.save();
         }, function(error) {
           // The file either could not be read, or could not be saved to Parse.
         });
       }
-    },*/
-
-    getLikes: function(){
-      var Models = new Parse.Object.extend("CarsImages");
+    },
+    
+   getLikes: function(){
+      var Models = new Parse.Object.extend("CarsViews");
       var query = new Parse.Query(Models);
       var query.equalTo("username", Parse.User.current().get("username"));
       query.find({
         success: function(results) {
           
-        }
-      })
-    },
-
+      }
+    })
+  },
+    
     Liked: function(){
       var carView = new Parse.Object("CarViews");
           carView.set("carId", $("#objectId").val());
-          carView.set("username", Parse.User.current().get("username"));
+          carView.set("username", Parse.User.current().get("username"))
           carView.set("liked", true);
           carView.save();
           
@@ -84,7 +91,7 @@ $(function() {
     Disliked: function(){
      var carView = new Parse.Object("CarViews");
           carView.set("carId", $("#objectId").val());
-          carView.set("username", Parse.User.current().get("username"));
+          carView.set("username", Parse.User.current().get("username"))
           carView.set("liked", false);
           carView.save();
         
@@ -108,27 +115,20 @@ $(function() {
           query.equalTo("username", Parse.User.current().get("username"))
           query.find({
               success: function(results) {
-                var count = 0;
-              if(results.length != 0){
-                for(i=0;i<carArray.length;i++){ 
-                    for(j=0;j<results.length;j++){
-                      if(results[j].get("carId") == carArray[i].id){
-                        count++;
-                      } else {
-                        $("#objectId").val(carArray[i].id);
-                        $(".car-picture").attr("src", carArray[i].get("source"));
-                      }
-                     }
-                     if(count >= carArray.length-1){
-                        $(".car-picture").attr("src", "img/no-image-found.jpg");
-                        $("#btn-like").hide();
-                        $("#btn-dislike").hide();
-                      } 
-                   }  
-                } else {
-                   $("#objectId").val(carArray[0].id);
-                   $(".car-picture").attr("src", carArray[0].get("source"));
-                } 
+                for(i=0;i<carArray.length;i++){
+                  for(j=0;j<results.length;j++){
+                    if(results[j].get("carId") != carArray[i].id){
+                      $("#objectId").val(carArray[i].id);
+                      $("#images img").attr("src", carArray[i].get('source'));
+                   } else {
+                      $("#images img").attr("src", "img/no-image-found.jpg");
+                      $("#btn-dislike").hide();
+                      $("#btn-like").hide();
+                   }
+                  }
+                  
+                }
+                 
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
