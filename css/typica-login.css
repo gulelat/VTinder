@@ -624,28 +624,19 @@ footer.navbar-fixed-bottom {
 }
 
 .car-main{
-  width:50%;
-  margin-right:auto;
-  margin-left:auto;
-  display:block;
 }
 
 .car-picture{
-  min-height:400px;
-  width:40%;
-  height:auto;
-  max-height:60%;
-  margin-right:auto;
+  display:block;
   margin-left:auto;
-  position:relative;
-  top:0;
+  margin-right:auto;
   padding:10px;
   background-color:white;
   box-shadow:1px 1px 5px #000;
 }
 
 .car-button{
-  margin-top:70%;
+  margin-top:50px;
   height:70px;
   text-align:center;
 }
