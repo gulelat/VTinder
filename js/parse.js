@@ -35,17 +35,17 @@ $(function() {
     },
 
     logOut: function() {
-      alert("hey");
       Parse.User.logOut();
       new LogInView();
       self.undelegateEvents();
       delete self;
+      $("#nav").hide();
     },
 
     render: function() {
-      $("#nav").html(_.template($("#nav-template").html()));
+      // $("#nav").html(_.template($("#nav-template").html()));
       this.$el.html(_.template($("#main-template").html()));
-      this.$el.html(_.template($("#logout-template").html()));
+      // this.$el.html(_.template($("#logout-template").html()));
       this.delegateEvents();
     }
 
