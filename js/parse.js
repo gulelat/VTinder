@@ -39,13 +39,13 @@ $(function() {
       new LogInView();
       self.undelegateEvents();
       delete self;
-      $("#nav").hide();
+      // $("#nav").hide();
     },
 
     render: function() {
       this.$el.html(_.template($("#main-template").html()));
-      $("#nav").html(_.template($("#nav-template").html()));
-      this.$el.html(_.template($("#logout-template").html()));
+      // $("#nav").html(_.template($("#nav-template").html()));
+      // this.$el.html(_.template($("#logout-template").html()));
       this.delegateEvents();
     }
 
