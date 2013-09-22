@@ -12,7 +12,6 @@
     <script src="js/parse.js"></script>
     <script src="js/nnav.jquery.js"></script>
     <script src="js/buybar.jquery.js"></script>
-    <script src="js/model.js"></script>
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -78,10 +77,10 @@
             </div>
         </div>
         <div class="col-lg-6 col-lg-offset-5" id="images">
-            <img height="350" width="500" src="http://www.bmwblog.com/wp-content/uploads/292398_10150995008502393_451986615_n-1.jpg" alt="bmw"/>
-            
-            <button class="btn btn-danger btn-like">FUCK YOU</button>
-            <button class="btn btn-success btn-like">Like</button>
+            <img height="350" width="500" src="" alt=""/>
+            <input type="hidden" id="objectId" value=""/>
+            <button id="btn-dislike" class="btn btn-danger">Dislike</button>
+            <button id="btn-like" class="btn btn-success">Like</button>
         </div>
         <footer class="white navbar-fixed-bottom">
             Want to leave :( ? &nbsp;&nbsp;&nbsp; <a href="javascript:void(0)" id="logout" class="btn btn-black">Logout</a>

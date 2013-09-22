@@ -22,17 +22,22 @@ $(function() {
     }
   });
 
+ 
+  
   var MainView = Parse.View.extend({
     events: {
       "click #logout": "logOut",
-      "click .btn-like": "nextImg"
+      "click #btn-like": "Liked",
+      "click #btn-dislike": "Disliked"
       //"click #upload": "uploadImg"
     },
 
     el: "#main",
 
+    Car: Parse.Object("CarsImages"),
+
     initialize: function() {
-      _.bindAll(this, "logOut", "nextImg");
+      _.bindAll(this, "logOut", "nextImg", "Liked", "Disliked", "findCars");
       this.render();
     },
 
@@ -54,10 +59,68 @@ $(function() {
         });
       }
     },*/
+    Liked: function(){
+      var carView = new Parse.Object("CarViews");
+          carView.set("carId", $("#objectId").val());
+          carView.set("username", Parse.User.current().get("username"))
+          carView.set("liked", true);
+          carView.save();
+          
+      this.nextImg();
+    },
+
+    Disliked: function(){
+     var carView = new Parse.Object("CarViews");
+          carView.set("carId", $("#objectId").val());
+          carView.set("username", Parse.User.current().get("username"))
+          carView.set("liked", false);
+          carView.save();
+        
+      this.nextImg();
+    },
 
     nextImg: function(){
+      
+      this.findCars();
+      
+    },
 
-      $("#images img").attr("src", "");
+    findCars: function() {
+      var Models = Parse.Object.extend("CarsImages");
+      var query = new Parse.Query(Models);
+      query.find({
+        success: function(results) {
+          var carArray = results;
+          Models = Parse.Object.extend("CarViews");
+          query = new Parse.Query(Models);
+          query.equalTo("username", Parse.User.current().get("username"))
+          query.find({
+              success: function(results) {
+                for(i=0;i<carArray.length;i++){
+                  for(j=0;j<results.length;j++){
+                    if(results[j].get("carId") != carArray[i].id){
+                      $("#objectId").val(carArray[i].id);
+                      $("#images img").attr("src", carArray[i].get('source'));
+                   } else {
+                      $("#images img").attr("src", "img/no-image-found.jpg");
+                      $("#btn-dislike").hide();
+                      $("#btn-like").hide();
+                   }
+                  }
+                  
+                }
+                 
+              },
+              error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+               }
+          });
+          
+        }, 
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+        }
+      });
     },
 
     logOut: function() {
@@ -71,6 +134,7 @@ $(function() {
     render: function() {
 
       this.$el.html(_.template($("#main-template").html()));
+      this.findCars();
       // $("#nav").html(_.template($("#nav-template").html()));
       // this.$el.html(_.template($("#logout-template").html()));
       this.delegateEvents();
