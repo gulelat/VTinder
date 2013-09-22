@@ -63,7 +63,7 @@ if($_POST['uvc']!=""){
     $mileage=$_POST['mileage'];
     $condition=$_POST['condition'];
     $carValue=new ValueOfCar();
-    print_r( $carValue->priceOfCar($uvc, $state, $mileage, $condition));
+    echo " ".$carValue->priceOfCar($uvc, $state, $mileage, $condition);
     
    }
 
