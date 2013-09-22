@@ -59,8 +59,16 @@ class ValueOfCar {
 
 if($_POST['uvc']!=""){
     $uvc=$_POST['uvc'];
+<<<<<<< HEAD
     $carValue=new ValueOfCar();
     print_r($carValue->priceOfCar($uvc, "MN", 700000, "rough"));
+=======
+    $state=$_POST['state'];
+    $mileage=$_POST['mileage'];
+    $condition=$_POST['condition'];
+    $carValue=new ValueOfCar();
+    print_r( $carValue->priceOfCar($uvc, $state, $mileage, $condition));
+>>>>>>> 34430c25bd13b60126418b6db4394d9a4515ff9a
     
    }
 
