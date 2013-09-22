@@ -3,11 +3,11 @@ $(document).ready(function() {
       $(this).toggleClass("click")
   });
 
-  $("input").on('click', function(e) {
+  $("input,select").on('click', function(e) {
     e.stopPropagation();
   });
 
-  $('#listBtn').on('click', function(e) {
+  $('#listBtn,#maker_load').on('click', function(e) {
     $('#buyBar').toggleClass("click")
   });
 });
