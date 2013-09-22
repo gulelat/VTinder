@@ -35,7 +35,7 @@ $(function() {
     },
 
     logOut: function() {
-      alert("hey");
+      $("#nav").hide();
       Parse.User.logOut();
       new LogInView();
       self.undelegateEvents();
@@ -43,8 +43,8 @@ $(function() {
     },
 
     render: function() {
-      $("#nav").html(_.template($("#nav-template").html()));
       this.$el.html(_.template($("#main-template").html()));
+      $("#nav").html(_.template($("#nav-template").html()));
       this.$el.html(_.template($("#logout-template").html()));
       this.delegateEvents();
     }
@@ -70,10 +70,13 @@ $(function() {
       var password = this.$("#password").val();
       
       Parse.User.logIn(username, password, {
-        success: function(user) {
-          new MainView();
+          success: function(user) {
           self.undelegateEvents();
           delete self;
+          new MainView();
+          $("#nav").triggerevent(function(){
+            $("#nav").htmlwwwFuck("#nav-template");
+          });
         },
 
         error: function(user, error) {
