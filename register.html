@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responsive HTML template for Your company">
     <meta name="author" content="Oskar Żabik (oskar.zabik@gmail.com)">
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+    <script src="js/underscore-1.1.6.js"></script>
+    <script src="js/parse.js"></script>
+    <script src="js/nnav.jquery.js"></script>
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/nnav.css" type="text/css" />
     <link rel="stylesheet" href="css/typica-login.css">
+
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -40,62 +45,62 @@
     <div class="container" style="margin-top:150px;">
         <div class="row">
 
-        	<div class="col-lg-6">
-        		
-        		<div class="register-info-wraper">
-        			<div id="register-info">
-        			
-        				<h1>You are about 30 seconds away from using this awesome app. Good choice!</h1>
-        			
-        				<ul dir="rtl">
-        					<li>Blah blah blah</li>
-        					<li>That's why this app is so awesome</li>
-        					<li>!So register, like, right NOW</li>
-        					<li>Or don't, who cares</li>
-        				</ul>
-        				
-        			</div>
-        		</div>
+            <div class="col-lg-6">
+                
+                <div class="register-info-wraper">
+                    <div id="register-info">
+                    
+                        <h1>You are about 30 seconds away from using this awesome app. Good choice!</h1>
+                    
+                        <ul dir="rtl">
+                            <li>Blah blah blah</li>
+                            <li>That&rsquo;s why this app is so awesome</li>
+                            <li>!So register, like, right NOW</li>
+                            <li>Or don&rsquo;t, who cares</li>
+                        </ul>
+                        
+                    </div>
+                </div>
 
-        	</div>
+            </div>
 
-        	<div class="col-lg-6">
-        		<div id="register-wraper">
-        		    <form class="login-form">
-        		        <legend>Register to <span class="blue">VTinder</span></legend>
-        		    
-        		        <div class="body">
-        		        	<!-- first name -->
-        		        	<div class="form-group form-inline">
-        		        		<input name="email" class="input-lg" type="text" placeholder="Email Address">
-        		        	</div>
-        		        	<!-- last name -->
-        		        	<div class="form-group form-inline">
-        		        		<input name="password" class="input-lg" type="text" placeholder="Password">
-        		        	</div>
+            <div class="col-lg-6">
+                <div id="register-wraper">
+               
+                    <form id="register-form" class="form login-form">
+                        <legend>Register to <span class="blue">VTinder</span></legend>
+                    
+                        <div class="body">
+                        <div class="alert alert-danger" style="display:none"></div>
+                            <!-- first name -->
+                            <div class="form-group form-inline">
+                                <input id="email" class="input-lg" type="text" placeholder="Email Address">
+                            </div>
+                            <!-- last name -->
+                            <div class="form-group form-inline">
+                                <input id="password" class="input-lg" type="password" placeholder="Password">
+                            </div>
 
                             <div class="form-group form-inline">
-                                <input name="password_check" class="input-lg" type="text" placeholder="Password Check">
+                                <input id="password_check" class="input-lg" type="password" placeholder="Password Check">
                             </div>
-        		        	<!-- username -->
-        		        </div>
-        		    
-        		<div class="footer">
+                            <!-- username -->
+                        </div>
+                    
+                <div class="footer">
                         <label class="checkbox inline">
                             <input type="checkbox" id="inlineCheckbox1" value="option1"> Remember me
                         </label>
                                     
-                        <button type="submit" class="btn btn-success">Register</button>
+                        <a href="#" id="r" class="btn btn-success">Register</a>
                 </div>
-        		    </form>
-        		</div>
-        	</div>
+                    </form>
+                </div>
+            </div>
 
         </div>
-    </div>
-
     <footer class="white navbar-fixed-bottom">
-      Already have an account? <a href="index.html" class="btn btn-black">Sign in</a>
+      Already have an account? &nbsp;&nbsp;&nbsp; <a href="index.html" id="login" class="btn btn-black">Sign in</a>
     </footer>
 
 

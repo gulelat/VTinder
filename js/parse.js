@@ -86,7 +86,7 @@ $(function() {
       return false;
     },
 
-    registerView: function() {
+    registerView: function(e) {
       new RegisterView();
       this.undelegateEvents();
       delete this;
@@ -122,17 +122,17 @@ $(function() {
       user.set("password", password);
      
 
-    if(username == ""){
-      self.$(".alert").html("Username can not be blank.").show();
-      this.$("#register-form button").removeAttr("disabled");
-    } else if(password == "") {
-      self.$(".alert").html("You must enter a Password.").show();
-      this.$("#register-form button").removeAttr("disabled");
-    } else if(password != password_check){
-      self.$(".alert").html("Your passwords do not match.").show();
-      this.$("#register-form button").removeAttr("disabled");
-    } else {
-      user.signUp(null, {
+      if(username == ""){
+        self.$(".alert").html("Email can not be blank.").show();
+        // this.$("#register-form button").removeAttr("disabled");
+      } else if(password == "") {
+        self.$(".alert").html("You must enter a Password.").show();
+        // this.$("#register-form button").removeAttr("disabled");
+      } else if(password != password_check){
+        self.$(".alert").html("Your passwords do not match.").show();
+        // this.$("#register-form button").removeAttr("disabled");
+      } else {
+        user.signUp(null, {
             success: function(user) {
               new LogInView();
               self.undelegateEvents();
@@ -145,7 +145,7 @@ $(function() {
             }
           });
       }
-      this.$("#register-form button").attr("disabled", "disabled");
+      // this.$("#register-form button").attr("disabled", "disabled");
 
       return false;
     },
