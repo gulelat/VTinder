@@ -18,6 +18,7 @@ body {
 @media (min-width: 979px) {
   /* line 13, ../sass/typica-login.scss */
   body {
+    overflow:hidden;
     padding-top: 0px;
   }
 }
@@ -456,6 +457,14 @@ footer.navbar-fixed-bottom {
   transition: all .3s ease-in-out ;
 }
 
+.buybar-ico{
+  height:20px;
+  padding:0;
+  width:250px;
+  text-align:center;
+  font-size:3em;
+}
+
 .buybar:hover{
   cursor:pointer;
   bottom:-72%;
@@ -471,7 +480,9 @@ footer.navbar-fixed-bottom {
   width:250px;
   margin-right:auto;
   margin-left:auto;
-  padding:20px;
+  padding-left:20px;
+  padding-right:20px;
+  padding-bottom:20px;
 }
 
 .buybar h1{
@@ -491,4 +502,150 @@ footer.navbar-fixed-bottom {
 .buybar hr{
   margin-top:6px;
   margin-bottom:4px;
+}
+
+.bar-ico{
+  width:50px;
+  height:50px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:7px;
+  padding-bottom: 4px;
+  line-height: 1.0;
+  font-size:26px;
+  margin-top:20px;
+  margin-left:20px;
+  text-decoration:none;
+  color:#333;
+  border-radius:50%;
+  border:4px solid #333;
+  text-align:center;
+  -webkit-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.bar-ico:hover{
+  cursor:pointer;
+  border:4px solid #fff;
+  color:#fff;
+}
+
+.bar-ico.click{
+  margin-left:270px;
+  -webkit-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.bar{
+  width:250px;
+  height:100%;
+  margin-left:-250px;
+  position:fixed;
+  overflow:auto;
+  -webkit-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.bar.click{
+  margin-left:0px;
+  -webkit-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-left 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-left 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+/*RIGHT*/
+.bar-ico-right{
+  z-index:20;
+  float:right;
+  width:50px;
+  height:50px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:7px;
+  padding-bottom: 4px;
+  line-height: 1.0;
+  font-size:26px;
+  margin-top:0px;
+  margin-right:20px;
+  text-decoration:none;
+  color:#333;
+  border-radius:50%;
+  border:4px solid #333;
+  text-align:center;
+  -webkit-transition: margin-right 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: margin-right 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-right 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-right 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.bar-ico-right:hover{
+  cursor:pointer;
+  border:4px solid #fff;
+  color:#fff;
+}
+
+.bar-ico-right.click{
+  margin-right:270px;
+  -webkit-transition: margin-right 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: margin-right 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: margin-right 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  margin-right 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.bar-right{
+  background-color:#919191;
+  width:250px;
+  height:100%;
+  float:right;
+  position:fixed;
+  overflow:auto;
+  margin-top:-20px;
+  right:-250px;
+  box-shadow:1px 0px 10px #000;
+  -webkit-transition: right 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: right 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: right 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  right 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.bar-right.click{
+  right:0px;
+  -webkit-transition: right 0.25s ease-in-out, width 0.25s ease-in-out; 
+  -moz-transition: right 0.25s ease-in-out, width 0.25s ease-in-out;
+  -o-transition: right 0.25s ease-in-out, width 0.25s ease-in-out;
+  transition:  right 0.25s ease-in-out, width 0.25s ease-in-out; 
+}
+
+.car-main{
+  width:50%;
+  margin-right:auto;
+  margin-left:auto;
+  display:block;
+}
+
+.car-picture{
+  min-height:400px;
+  width:40%;
+  height:auto;
+  max-height:60%;
+  margin-right:auto;
+  margin-left:auto;
+  position:relative;
+  top:0;
+  padding:10px;
+  background-color:white;
+  box-shadow:1px 1px 5px #000;
+}
+
+.car-button{
+  margin-top:70%;
+  height:70px;
+  text-align:center;
 }

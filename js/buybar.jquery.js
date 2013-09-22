@@ -7,7 +7,17 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
-  $('#listBtn,#maker_load').on('click', function(e) {
+  $('#listBtn,#maker_load,#getEstimate').on('click', function(e) {
     $('#buyBar').toggleClass("click")
+  });
+
+  $('#bar-ico').on('click', function(){
+    $("#sidebar").toggleClass("click")
+    $("#bar-ico").toggleClass("click")
+  });
+
+  $('#bar-ico-right').on('click', function(){
+    $("#bar-right").toggleClass("click")
+    $("#bar-ico-right").toggleClass("click")
   });
 });
