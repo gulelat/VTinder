@@ -32,15 +32,18 @@
 
 
     <script type="text/template" id="main-template">
+        <div class="bar-right" id="bar-right"></div>
+        <div class="bar-ico-right" id="bar-ico-right"><</div>
+
+        <div class="bar" id="sidebar">
         <div class="sidebar sidebar-content"><br><br><br>
             <h1>Filter</h1>
             <br>
-            <input class="input" type="text" id="zipcode" placeholder="Zipcode">
-            <input class="input" type="text" id="radius" placeholder="Selling in X miles">
+            <input class="input" type="text" id="filter-state" placeholder="State">
             <hr>
-            <input class="input" type="text" id="year" placeholder="Year">
-            <input class="input" type="text" id="model" placeholder="Model">
-            <input class="input" type="text" id="make" placeholder="Make">
+            <input class="input" type="text" id="filter-year" placeholder="Year">
+            <input class="input" type="text" id="filter-model" placeholder="Model">
+            <input class="input" type="text" id="filter-maker" placeholder="Make">
 
             <hr style="margin-bottom:10px;">
             <div style="inline; text-align:center;">
@@ -50,38 +53,60 @@
         </div>
 
         <div class="buybar" id="buyBar">
+            <div class="buybar-ico">
+                <p id="pullup">^</p>
+            </div>
             <div class="buybar-content">
                 <br>
                 <br>
                 <br>
                 <h1>Sell</h1>
                 <br>
-                <input class="input" type="text" id="zipcode" placeholder="Zipcode">
-                <input class="input" type="text" id="year" placeholder="Year">
-                <input class="input" type="text" id="make" placeholder="Make">
-                <select class="input" type="text" id="models" placeholder="Model" style="width:160px; float:left; text-align:center;">
+                <input class="input" type="text" id="state" placeholder="State (e.g. VA)">
+                <input class="input" type="text" id="year" placeholder="Year bought">
+                <input class="input" type="text" id="maker" placeholder="Make">
+                <select class="input" type="text" id="models" placeholder="Model" style="width:160px; float:left; text-align:center; height: 45px; margin-bottom: 3px; text-align:left; padding-top:10px;">
+                </select>
                 <a href="javascript:void(0)" id="maker_load" class="btn btn-primary btn-xs" style="width:45px; height:45px; margin-top:1px; padding-top:10px; float:right;">Load</a>
                 <div class="input-group" style="margin-bottom:3px;">
                     <input class="input form-control" type="text" id="mileage" placeholder="Mileage">
                     <span class="input-group-addon">mi.</span>
                 </div>
+                <select class="input" type="text" id="condition" style="height:45px; margin-bottom:3px; width:210px; text-align:center; padding-top:10px; font-size:1.25em;">
+                     <option id="condition" selected="selected" value="">Condition</option>
+                     <option value="xclean">Excellent</option>
+                     <option value="clean">Good</option>
+                     <option value="avg">Fair</option>
+                     <option value="rough">Bad</option>
+                 </select>
                 <div class="input-group" style="margin-bottom:3px;">
                     <span class="input-group-addon" style="width:20px;">$</span>
-                    <input class="input form-control" type="text" id="price" placeholder="Asking price" style="">
+                    <input class="input form-control" type="text" id="dollar" placeholder="Asking price" style="">
                     <span class="input-group-addon" style="width:20px;">.00</span>
                 </div>
                 <hr style="margin-bottom:10px;">
+                <p>Estimate:<span id="uvc"></span></p>
+                <hr style="margin-bottom:10px;">
                 <div style="inline; text-align:center;">
                     <a href="javascript:void(0)" id="listBtn" class="btn btn-success">List</a>
+                    <a href="javascript:void(0)" id="getEstimate" class="btn btn-primary">Get Estimate</a>
+
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-lg-offset-5" id="images">
-            <img height="350" width="500" src="" alt=""/>
-            <input type="hidden" id="objectId" value=""/>
-            <button id="btn-dislike" class="btn btn-danger">Dislike</button>
-            <button id="btn-like" class="btn btn-success">Like</button>
+
         </div>
+        <div class="bar-ico" id="bar-ico">></div>
+
+        <div class="car-main">
+            <img src="" class="car-picture"/>
+            <input type="hidden" id="objectId" value=""/>
+            <div class="car-button">
+                <a href="javascript:void(0)" id="btn-like" class="btn btn-success btn-lg">Like</a>
+                <a href="javascript:void(0)" id="btn-dislike" class="btn btn-danger btn-lg">Pass</a>
+            </div>
+        </div>
+
         <footer class="white navbar-fixed-bottom">
             Want to leave :( ? &nbsp;&nbsp;&nbsp; <a href="javascript:void(0)" id="logout" class="btn btn-black">Logout</a>
         </footer>

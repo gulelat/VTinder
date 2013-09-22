@@ -40,6 +40,7 @@ function init(){
         //alert(year+" "+maker+" "+model+" "+condition+" "+state+" "+mileage);
         getUVC(maker,model,parseInt(year),condition,state,mileage);
     });
+
     
 }
 
@@ -139,7 +140,6 @@ function saveCar(){
     */
 }
 
-
 function getUVCData(uvc,state,year,mileage,condition){
     //alert(uvc);
     
@@ -149,7 +149,6 @@ function getUVCData(uvc,state,year,mileage,condition){
         mileage:mileage,
         state:state,
         condition:condition
-
     } );
     
     
