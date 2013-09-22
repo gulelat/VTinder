@@ -37,7 +37,7 @@ function init(){
         var state=$("#state").val();
         var mileage=$("#mileage").val();
 
-        alert(year+" "+maker+" "+model+" "+condition+" "+state+" "+mileage);
+        //alert(year+" "+maker+" "+model+" "+condition+" "+state+" "+mileage);
         getUVC(maker,model,parseInt(year),condition,state,mileage);
     });
     
@@ -135,7 +135,7 @@ function saveCar(){
 }
 
 function getUVCData(uvc,state,year,mileage,condition){
-    alert(uvc);
+    //alert(uvc);
     
     $( "#uvc" ).load( "transactions.php", { 
         uvc:uvc,
