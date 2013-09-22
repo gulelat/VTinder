@@ -74,9 +74,6 @@ $(function() {
           self.undelegateEvents();
           delete self;
           new MainView();
-          $("#nav").triggerevent(function(){
-            $("#nav").htmlwwwFuck("#nav-template");
-          });
         },
 
         error: function(user, error) {

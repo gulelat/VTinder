@@ -9,7 +9,7 @@ html {
 
 /* line 13, ../sass/typica-login.scss */
 body {
-  background-color: green;
+  background-color:#E0E3FF;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -437,4 +437,30 @@ footer.navbar-fixed-bottom {
 .buybar.click{
   bottom:0%;
   transition: all .3s ease-in-out;
+}
+
+.buybar-content{
+  width:250px;
+  margin-right:auto;
+  margin-left:auto;
+  padding:20px;
+}
+
+.buybar h1{
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+}
+
+.buybar input{
+  width:100%;
+  height: 45px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+  margin-bottom:3px;
+}
+
+.buybar hr{
+  margin-top:6px;
+  margin-bottom:4px;
 }
