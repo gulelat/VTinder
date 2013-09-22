@@ -27,11 +27,24 @@ function init(){
     });
      
     $("#image_uploader").hide();
+
+    $( "#getEstimate" ).click(function(event){
+        event.preventDefault();
+        var year=$("#year").val();
+        var maker=$("#maker").val();
+        var model=$("#models").val();
+        var condition=$("#condition").val();
+        var state=$("#state").val();
+        var mileage=$("#mileage").val();
+
+        alert(year+" "+maker+" "+model+" "+condition+" "+state+" "+mileage);
+        getUVC(maker,model,parseInt(year),condition,state,mileage);
+    });
     
 }
 
 
-function getUVC(maker,model,year){
+function getUVC(maker,model,year,condition,state,mileage){
     Parse.$ = jQuery;
     var Car = Parse.Object.extend("BlackBook");
     var query = new Parse.Query(Car);
@@ -51,7 +64,7 @@ function getUVC(maker,model,year){
             //  +'('+object.get('year')+')'+" - "+object.get('series')+' uvc: ' + object.get('uvc'));
             //}
             var object = results[0];
-            getUVCData(object.get('uvc'));
+            getUVCData(object.get('uvc'),state,year,mileage,condition);
         //alert(results);
         //return results;
         },
@@ -79,7 +92,7 @@ function getModels(year, maker){
             for (var i = 0; i < results.length; i++) { 
                 var object = results[i];
                 //alert(object.get('model')+" - "+object.get('series')+" ["+object.get('make')+"]");
-                $('#models').append('<option value="'+object.get('model')+' - '+object.get('series')+' ['+object.get('style')+']">'+object.get('model')+' - '+object.get('series')+' ['+object.get('style')+']</option>');    
+                $('#models').append('<option value="'+object.get('model')+'">'+object.get('model')+' - '+object.get('series')+' ['+object.get('style')+']</option>');    
             }
                   
         },
@@ -121,11 +134,15 @@ function saveCar(){
     */
 }
 
-function getUVCData(uvc){
+function getUVCData(uvc,state,year,mileage,condition){
     alert(uvc);
     
     $( "#uvc" ).load( "transactions.php", { 
-        uvc:uvc
+        uvc:uvc,
+        year:year,
+        mileage:mileage,
+        state:state,
+        condition:condition
     } );
     
     
