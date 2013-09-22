@@ -44,6 +44,7 @@ $(function() {
     render: function() {
       $("#nav").html(_.template($("#nav-template").html()));
       this.$el.html(_.template($("#main-template").html()));
+      this.$el.html(_.template($("#logout-template").html()));
       this.delegateEvents();
     }
 
@@ -76,11 +77,11 @@ $(function() {
 
         error: function(user, error) {
           self.$(".alert").html("Invalid username or password. Please try again.").show();
-          this.$(".login-form button").removeAttr("disabled");
+          // this.$(".login-form button").removeAttr("disabled");
         }
       });
 
-      this.$(".login-form button").attr("disabled", "disabled");
+      // this.$(".login-form button").attr("disabled", "disabled");
 
       return false;
     },
