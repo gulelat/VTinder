@@ -25,13 +25,39 @@ $(function() {
   var MainView = Parse.View.extend({
     events: {
       "click #logout": "logOut",
+      "click .btn-like": "nextImg"
+      //"click #upload": "uploadImg"
     },
 
     el: "#main",
 
     initialize: function() {
-      _.bindAll(this, "logOut");
+      _.bindAll(this, "logOut", "nextImg");
       this.render();
+    },
+
+    /*uploadImg: function(){
+      
+      var fileUploadControl = $("#profilePhotoFileUpload")[0];
+      if (fileUploadControl.files.length > 0) {
+        var file = fileUploadControl.files[0];
+        var name = "photo.jpg";
+       
+        var parseFile = new Parse.File(name, file);
+        parseFile.save().then(function() {
+          var jobApplication = new Parse.Object("CarsImages");
+          jobApplication.set("applicantName", "Joe Smith");
+          jobApplication.set("applicantResumeFile", name);
+          jobApplication.save();
+        }, function(error) {
+          // The file either could not be read, or could not be saved to Parse.
+        });
+      }
+    },*/
+
+    nextImg: function(){
+
+      $("#images img").attr("src", "");
     },
 
     logOut: function() {
@@ -43,6 +69,7 @@ $(function() {
     },
 
     render: function() {
+
       this.$el.html(_.template($("#main-template").html()));
       // $("#nav").html(_.template($("#nav-template").html()));
       // this.$el.html(_.template($("#logout-template").html()));

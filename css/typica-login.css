@@ -22,6 +22,34 @@ body {
   }
 }
 
+#images {
+  height: 300px;
+  margin-top: 80px;
+  top: 50%;
+  bottom: 50%;
+}
+
+#images img {
+  background-color: #fff;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+#images button {
+  left: 7%;
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+  min-width: 200px;
+  padding: 20px;
+}
+
 /* line 21, ../sass/typica-login.scss */
 .blue {
   color: #447fc8;

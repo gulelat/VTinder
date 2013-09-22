@@ -27,6 +27,8 @@ function init(){
     });
      
     $("#image_uploader").hide();
+<<<<<<< HEAD
+=======
 
     $( "#getEstimate" ).click(function(event){
         event.preventDefault();
@@ -40,11 +42,16 @@ function init(){
         //alert(year+" "+maker+" "+model+" "+condition+" "+state+" "+mileage);
         getUVC(maker,model,parseInt(year),condition,state,mileage);
     });
+>>>>>>> 34430c25bd13b60126418b6db4394d9a4515ff9a
     
 }
 
 
+<<<<<<< HEAD
+function getUVC(maker,model,year){
+=======
 function getUVC(maker,model,year,condition,state,mileage){
+>>>>>>> 34430c25bd13b60126418b6db4394d9a4515ff9a
     Parse.$ = jQuery;
     var Car = Parse.Object.extend("BlackBook");
     var query = new Parse.Query(Car);
@@ -64,7 +71,11 @@ function getUVC(maker,model,year,condition,state,mileage){
             //  +'('+object.get('year')+')'+" - "+object.get('series')+' uvc: ' + object.get('uvc'));
             //}
             var object = results[0];
+<<<<<<< HEAD
+            getUVCData(object.get('uvc'));
+=======
             getUVCData(object.get('uvc'),state,year,mileage,condition);
+>>>>>>> 34430c25bd13b60126418b6db4394d9a4515ff9a
         //alert(results);
         //return results;
         },
@@ -92,7 +103,11 @@ function getModels(year, maker){
             for (var i = 0; i < results.length; i++) { 
                 var object = results[i];
                 //alert(object.get('model')+" - "+object.get('series')+" ["+object.get('make')+"]");
+<<<<<<< HEAD
+                $('#models').append('<option value="'+object.get('model')+' - '+object.get('series')+' ['+object.get('style')+']">'+object.get('model')+' - '+object.get('series')+' ['+object.get('style')+']</option>');    
+=======
                 $('#models').append('<option value="'+object.get('model')+'">'+object.get('model')+' - '+object.get('series')+' ['+object.get('style')+']</option>');    
+>>>>>>> 34430c25bd13b60126418b6db4394d9a4515ff9a
             }
                   
         },
@@ -134,6 +149,13 @@ function saveCar(){
     */
 }
 
+<<<<<<< HEAD
+function getUVCData(uvc){
+    alert(uvc);
+    
+    $( "#uvc" ).load( "transactions.php", { 
+        uvc:uvc
+=======
 function getUVCData(uvc,state,year,mileage,condition){
     //alert(uvc);
     
@@ -143,6 +165,7 @@ function getUVCData(uvc,state,year,mileage,condition){
         mileage:mileage,
         state:state,
         condition:condition
+>>>>>>> 34430c25bd13b60126418b6db4394d9a4515ff9a
     } );
     
     
