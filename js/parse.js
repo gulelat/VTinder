@@ -74,7 +74,7 @@ $(function() {
     Liked: function(){
       var carView = new Parse.Object("CarViews");
           carView.set("carId", $("#objectId").val());
-          carView.set("username", Parse.User.current().get("username"))
+          carView.set("username", Parse.User.current().get("username"));
           carView.set("liked", true);
           carView.save();
           
@@ -84,7 +84,7 @@ $(function() {
     Disliked: function(){
      var carView = new Parse.Object("CarViews");
           carView.set("carId", $("#objectId").val());
-          carView.set("username", Parse.User.current().get("username"))
+          carView.set("username", Parse.User.current().get("username"));
           carView.set("liked", false);
           carView.save();
         
@@ -108,20 +108,27 @@ $(function() {
           query.equalTo("username", Parse.User.current().get("username"))
           query.find({
               success: function(results) {
-                for(i=0;i<carArray.length;i++){
-                  for(j=0;j<results.length;j++){
-                    if(results[j].get("carId") != carArray[i].id){
-                      $("#objectId").val(carArray[i].id);
-                      $("#images img").attr("src", carArray[i].get('source'));
-                   } else {
-                      $("#images img").attr("src", "img/no-image-found.jpg");
-                      $("#btn-dislike").hide();
-                      $("#btn-like").hide();
-                   }
-                  }
-                  
-                }
-                 
+                var count = 0;
+              if(results.length != 0){
+                for(i=0;i<carArray.length;i++){ 
+                    for(j=0;j<results.length;j++){
+                      if(results[j].get("carId") == carArray[i].id){
+                        count++;
+                      } else {
+                        $("#objectId").val(carArray[i].id);
+                        $(".car-picture").attr("src", carArray[i].get("source"));
+                      }
+                     }
+                     if(count >= carArray.length-1){
+                        $(".car-picture").attr("src", "img/no-image-found.jpg");
+                        $("#btn-like").hide();
+                        $("#btn-dislike").hide();
+                      } 
+                   }  
+                } else {
+                   $("#objectId").val(carArray[0].id);
+                   $(".car-picture").attr("src", carArray[0].get("source"));
+                } 
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
