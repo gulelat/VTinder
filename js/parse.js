@@ -35,8 +35,9 @@ $(function() {
     },
 
     logOut: function() {
+      alert("hey");
       Parse.User.logOut();
-
+      new LogInView();
       self.undelegateEvents();
       delete self;
     },
@@ -44,6 +45,7 @@ $(function() {
     render: function() {
       $("#nav").html(_.template($("#nav-template").html()));
       this.$el.html(_.template($("#main-template").html()));
+      $("#footer").html(_.template($("#logout-template").html()));
       this.delegateEvents();
     }
 
@@ -51,7 +53,7 @@ $(function() {
   
   var LogInView = Parse.View.extend({
     events: {
-      "submit form.login-form": "logIn",
+      "click #l": "logIn",
       "click #register": "registerView"
     },
 
@@ -69,23 +71,23 @@ $(function() {
       
       Parse.User.logIn(username, password, {
         success: function(user) {
-          new ManageTodosView();
+          new MainView();
           self.undelegateEvents();
           delete self;
         },
 
         error: function(user, error) {
           self.$(".alert").html("Invalid username or password. Please try again.").show();
-          this.$(".login-form button").removeAttr("disabled");
+          // this.$(".login-form button").removeAttr("disabled");
         }
       });
 
-      this.$(".login-form button").attr("disabled", "disabled");
+      // this.$(".login-form button").attr("disabled", "disabled");
 
       return false;
     },
 
-    registerView: function() {
+    registerView: function(e) {
       new RegisterView();
       this.undelegateEvents();
       delete this;
@@ -121,19 +123,19 @@ $(function() {
       user.set("password", password);
      
 
-    if(username == ""){
-      self.$(".alert").html("Username can not be blank.").show();
-      this.$("#register-form button").removeAttr("disabled");
-    } else if(password == "") {
-      self.$(".alert").html("You must enter a Password.").show();
-      this.$("#register-form button").removeAttr("disabled");
-    } else if(password != password_check){
-      self.$(".alert").html("Your passwords do not match.").show();
-      this.$("#register-form button").removeAttr("disabled");
-    } else {
-      user.signUp(null, {
+      if(username == ""){
+        self.$(".alert").html("Email can not be blank.").show();
+        // this.$("#register-form button").removeAttr("disabled");
+      } else if(password == "") {
+        self.$(".alert").html("You must enter a Password.").show();
+        // this.$("#register-form button").removeAttr("disabled");
+      } else if(password != password_check){
+        self.$(".alert").html("Your passwords do not match.").show();
+        // this.$("#register-form button").removeAttr("disabled");
+      } else {
+        user.signUp(null, {
             success: function(user) {
-              new LogInView();
+              new MainView();
               self.undelegateEvents();
               delete self;
             },
@@ -144,7 +146,7 @@ $(function() {
             }
           });
       }
-      this.$("#register-form button").attr("disabled", "disabled");
+      // this.$("#register-form button").attr("disabled", "disabled");
 
       return false;
     },
